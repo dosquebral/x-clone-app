@@ -21,14 +21,18 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    followers: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
-    following: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
+    followers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    following: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ], // <-- Missing comma was here
     profileImg: {
       type: String,
       default: "",
@@ -49,6 +53,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const User = new mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 
 export default User;

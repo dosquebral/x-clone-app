@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
       },
-    ], // <-- Missing comma was here
+    ],
     profileImg: {
       type: String,
       default: "",
